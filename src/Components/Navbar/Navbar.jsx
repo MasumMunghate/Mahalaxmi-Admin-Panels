@@ -37,7 +37,7 @@ const Navbar = () => {
           Hello Jone!! 👋
         </Text> */}
         <Flex direction={{ base: "column", lg: "row" }}>
-          <InputGroup borderRadius="10px" width={{base: "80%", md: "100%" }} ml='5rem'>
+          {/* <InputGroup borderRadius="10px" width={{base: "80%", md: "100%" }} ml='5rem'>
             <InputLeftElement pointerEvents="none" mt="1" borderRadius="10px">
               <Search2Icon color="gray.400" />
             </InputLeftElement>
@@ -48,7 +48,7 @@ const Navbar = () => {
               padding="1rem"
               borderRadius="10px"
             />
-          </InputGroup>
+          </InputGroup> */}
         </Flex>
         <Flex align="center" gap={{ base: 2, md: "1rem" }}>
           <Box>

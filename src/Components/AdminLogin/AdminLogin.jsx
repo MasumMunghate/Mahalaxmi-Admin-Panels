@@ -1,12 +1,35 @@
-import React from 'react'
+import React, { useState } from "react";
 import { Box, Text, Button, useMediaQuery } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
+import Picture from "../../assets/teenpatti.webp";
+import king from "..//../assets/pngtree-king-crown-sticker-png-image_6549524.png";
+import axios from "axios";
 
-import Picture from '../../assets/teenpatti.webp'
-import king from '..//../assets/pngtree-king-crown-sticker-png-image_6549524.png'
+const AdminLogin = () => {
+  const navigate = useNavigate();
+  const [isLargerThan1250] = useMediaQuery("(min-width: 1250px)");
+  const [adminID, setAdminID] = useState("");
+  const [adminPassword, setAdminPassword] = useState("");
 
-const Registration = () => {
-    const [isLargerThan1250] = useMediaQuery("(min-width: 1250px)");
+  const handleLogin = async () => {
+    const paylode = {
+      username: adminID,
+      password: adminPassword,
+    };
+
+    const congif = {
+      method: "POST",
+      url: " http://localhost:5000/user/signin",
+      data: paylode,
+    };
+
+    const response = await axios(congif);
+    if (response.status === 200) {
+      navigate("/");
+    }
+    console.log(response, "respo");
+  };
   return (
     <>
       <Box
@@ -80,6 +103,8 @@ const Registration = () => {
             <input
               type="text"
               placeholder="Admin User ID"
+              value={adminID}
+              onChange={(e) => setAdminID(e.target.value)}
               style={{
                 padding: "3px 6px",
                 marginBottom: "16px",
@@ -96,6 +121,8 @@ const Registration = () => {
             <input
               type="text"
               placeholder="Admin Password"
+              value={adminPassword}
+              onChange={(e) => setAdminPassword(e.target.value)}
               style={{
                 padding: "3px 6px",
                 marginBottom: "16px",
@@ -108,42 +135,14 @@ const Registration = () => {
                 boxSizing: "border-box",
               }}
             />
-            {/* <input
-              type="password"
-              placeholder="Password"
-              style={{
-                padding: "3px 6px",
-                marginBottom: "16px",
-                borderRadius: "4px",
-                borderColor: "gray",
-                border: "none",
-                borderBottom: "1px solid gray",
-                borderWidth: "1px",
-                width: "100%",
-                boxSizing: "border-box",
-              }}
-            />
-            <input
-              type="password"
-              placeholder="Forgot-password"
-              style={{
-                padding: "3px 6px",
-                marginBottom: "16px",
-                border: "none",
-                borderBottom: "1px solid gray",
-                borderRadius: "4px",
-                borderColor: "gray",
-                borderWidth: "1px",
-                width: "100%",
-                boxSizing: "border-box",
-              }}
-            /> */}
             <Button
               backgroundImage="linear-gradient(to top, red, yellow)"
               padding="5px 10px"
               width="22.5em"
+              fontWeight="bold"
+              onClick={handleLogin}
             >
-              Create Account
+              Log In
             </Button>
           </Box>
         </Box>
@@ -152,4 +151,4 @@ const Registration = () => {
   );
 };
 
-export default Registration;
+export default AdminLogin;

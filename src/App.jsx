@@ -12,7 +12,8 @@ import ListOfGame from "./Components/ListOfGames/ListOfGame";
 import ListOfUser from "./Components/ListOfUsers/ListOfUsers";
 import AccountStatment from "./Components/AccountStatement/AccountStatment";
 import LogOut from "./Components/LogOut/LogOut";
-import Registration from "./Components/Registration/Registration";
+
+import AdminLogin from "./Components/AdminLogin/AdminLogin";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,7 +28,7 @@ const router = createBrowserRouter(
           {/* <Route path="logout" element={<LogOut />} /> */}
         </Route>
       </Route>
-      <Route path="registration" element={<Registration />} />
+      <Route path="adminlogin" element={<AdminLogin />} />
     </>
   )
 );

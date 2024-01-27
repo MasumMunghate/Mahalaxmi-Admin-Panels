@@ -18,15 +18,31 @@ const Dashbord = () => {
   const [data, setData] = useState([]);
   const [topplayer, setTopPlayer] = useState([]);
   const [ActiveUser, setActiveUser] = useState([]);
+  const [TotleRevenue, setTotleRevenue] = useState();
 
-  const [search , setSearch] = useState();
-  const [filterData , setFilterData] = useState();
+  const [search, setSearch] = useState();
+  const [filterData, setFilterData] = useState();
 
   useEffect(() => {
     TredingGames();
     TopPlayers();
     TotalActiveUser();
+    TotaleRevenue();
   }, []);
+
+  const TotaleRevenue = async () => {
+    try {
+      const config = {
+        method: "GET",
+        url: "http://localhost:5000/user/get_revenue",
+      };
+      const response = await axios(config);
+      // console.log(response,'Totle revenue');
+      setTotleRevenue(response?.data?.totalRevenue);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const columnsAllPlayer = [
     {
@@ -47,7 +63,6 @@ const Dashbord = () => {
     },
   ];
 
-
   const TredingGames = async () => {
     try {
       const config = {
@@ -55,7 +70,8 @@ const Dashbord = () => {
         url: "http://localhost:5000/user/get_TrendingGame",
       };
       const response = await axios(config);
-      setData(response.data);
+      setData(response?.data);
+      console.log(response?.data,"Trending Game");
     } catch (err) {
       console.log("Error", err);
     }
@@ -68,27 +84,27 @@ const Dashbord = () => {
     };
     const response = await axios(config);
     setTopPlayer(response?.data?.Player);
-    setFilterData(response?.data?.Player)
+    setFilterData(response?.data?.Player);
     console.log(response.data, "Top Player");
   };
 
-  useEffect(()=>{
-      const result = topplayer.filter((player)=>{
-          return player.userId.toLowerCase().match(search.toLowerCase())
-      })
-      setFilterData(result)
-  },[search])
+  useEffect(() => {
+    const result = topplayer.filter((player) => {
+      return player.userId.toLowerCase().match(search.toLowerCase());
+    });
+    setFilterData(result);
+  }, [search]);
 
-  const TotalActiveUser = async()=>{
+  const TotalActiveUser = async () => {
     const config = {
-      method : "GET",
-      url : "http://localhost:5000/user/get_ActiveUsers"
-    }
+      method: "GET",
+      url: "http://localhost:5000/user/get_ActiveUsers",
+    };
 
     const response = await axios(config);
-    setActiveUser(response?.data?.Total)
-    console.log(response?.data,"responce");
-  }
+    setActiveUser(response?.data?.Total);
+    console.log(response?.data, "responce");
+  };
   return (
     <>
       <Box
@@ -98,8 +114,6 @@ const Dashbord = () => {
         p="0.5rem"
         mt="2rem"
       >
-      
-
         <Flex
           justifyContent="center"
           alignItems="center"
@@ -123,10 +137,11 @@ const Dashbord = () => {
             p="0.5rem"
             width={["100%", "30%"]}
             textAlign="center"
+            bg='green'
             borderRadius="10px"
           >
-            <Text fontWeight="bold">200,000</Text>
-            <Text color="#7D0A0A" fontWeight="500">
+            <Text fontWeight="bold" color='white'>+{TotleRevenue}</Text>
+            <Text color="white" fontWeight="500">
               Total Revenue
             </Text>
           </Box>
@@ -214,8 +229,8 @@ const Dashbord = () => {
               type="text"
               placeholder="Search...."
               w="30%"
-             value={search}
-             onChange={(e)=>setSearch(e.target.value)}
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
             />
           }
         />

@@ -164,7 +164,7 @@ const Sidebar = () => {
                   </Flex>
                 </NavLink>
               </Box>
-              <Box bg="#6a0000">
+              {/* <Box bg="#6a0000">
                 <Flex
                   align="center"
                   bg="#6a0000"
@@ -182,9 +182,9 @@ const Sidebar = () => {
                   ></i>
                   Setting
                 </Flex>
-              </Box>
+              </Box> */}
               <Box bg="#6a0000">
-                <NavLink to='logout'>
+                <NavLink to='adminlogin'>
                   <Flex
                     align="center"
                     bg="#6a0000"
@@ -346,6 +346,7 @@ const Sidebar = () => {
                         </Flex>
                       </Box>
                       <Box bg="#6a0000">
+                        <NavLink to="adminlogin">
                         <Flex
                           align="center"
                           bg="#6a0000"
@@ -363,6 +364,7 @@ const Sidebar = () => {
                           ></i>
                           Logout
                         </Flex>
+                        </NavLink>
                       </Box>
                     </Flex>
                   </Box>
