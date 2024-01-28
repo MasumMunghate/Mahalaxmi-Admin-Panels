@@ -81,7 +81,7 @@ const Sidebar = () => {
           >
             <Flex direction="column" justify="center" fontSize="1.5rem">
               <Box bg="#6a0000" _hover={{ backgroundColor: "#ee9b02" }}>
-                <NavLink to="/">
+                <NavLink to="/rootlayout">
                   <Flex
                     align="center"
                     bg="#6a0000"
@@ -184,7 +184,7 @@ const Sidebar = () => {
                 </Flex>
               </Box> */}
               <Box bg="#6a0000">
-                <NavLink to='adminlogin'>
+                <NavLink to='/'>
                   <Flex
                     align="center"
                     bg="#6a0000"
@@ -243,7 +243,7 @@ const Sidebar = () => {
                   >
                     <Flex direction="column" justify="center" fontSize="1.5rem">
                       <Box bg="#6a0000" _hover={{ backgroundColor: "#ee9b02" }}>
-                        <NavLink to='/'>
+                        <NavLink to='/rootlayout'>
                         <Flex
                           align="center"
                           bg="#6a0000"
@@ -346,7 +346,7 @@ const Sidebar = () => {
                         </Flex>
                       </Box>
                       <Box bg="#6a0000">
-                        <NavLink to="adminlogin">
+                        <NavLink to="/">
                         <Flex
                           align="center"
                           bg="#6a0000"

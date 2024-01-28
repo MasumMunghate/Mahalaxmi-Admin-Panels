@@ -25,8 +25,7 @@ const router = createBrowserRouter(
           <Route path="listofgame" element={<ListOfGame />} />
           <Route path="listofuser" element={<ListOfUser />} />
           <Route path="accountstatement" element={<AccountStatment />} />
-          
-          {/* <Route path="logout" element={<LogOut />} /> */}
+          <Route path="logout" element={<LogOut />} />
         </Route>
       </Route>
       

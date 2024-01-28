@@ -27,7 +27,7 @@ const AdminLogin = () => {
 
     const response = await axios(congif);
     if (response.status === 200) {
-      navigate("/rootlayout");
+      navigate("rootlayout");
     }
     console.log(response, "respo");
   };
