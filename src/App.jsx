@@ -19,7 +19,8 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route>
-        <Route path="/" element={<RootLayOut />}>
+        <Route path="/" element={<AdminLogin />} />
+        <Route path="rootlayout" element={<RootLayOut />}>
           <Route index element={<Dashbord />} />
           <Route path="listofgame" element={<ListOfGame />} />
           <Route path="listofuser" element={<ListOfUser />} />
@@ -28,7 +29,7 @@ const router = createBrowserRouter(
           {/* <Route path="logout" element={<LogOut />} /> */}
         </Route>
       </Route>
-      <Route path="adminlogin" element={<AdminLogin />} />
+      
     </>
   )
 );

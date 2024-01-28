@@ -13,6 +13,7 @@ const AdminLogin = () => {
   const [adminPassword, setAdminPassword] = useState("");
 
   const handleLogin = async () => {
+    const apiUrl = import.meta.env.VITE_APP_API_URL;
     const paylode = {
       username: adminID,
       password: adminPassword,
@@ -20,13 +21,13 @@ const AdminLogin = () => {
 
     const congif = {
       method: "POST",
-      url: " http://localhost:5000/user/signin",
+      url: `${apiUrl}/user/signin`,
       data: paylode,
     };
 
     const response = await axios(congif);
     if (response.status === 200) {
-      navigate("/");
+      navigate("/rootlayout");
     }
     console.log(response, "respo");
   };

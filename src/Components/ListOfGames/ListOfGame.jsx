@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 
 const ListOfGame = () => {
+  const apiUrl = import.meta.env.VITE_APP_API_URL;
   const [allGameList, setAllGameList] = useState([]);
   useEffect(() => {
     getAllGame();
@@ -12,7 +13,7 @@ const ListOfGame = () => {
   const getAllGame = async () => {
     const config = {
       method: "GET",
-      url: "http://localhost:5000/user/get_ListOfGames",
+      url: `${apiUrl}/user/get_ListOfGames`,
     };
     const response = await axios(config);
     setAllGameList(response?.data?.Game);

@@ -15,6 +15,9 @@ import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 
 const Dashbord = () => {
+
+  const apiUrl = import.meta.env.VITE_APP_API_URL;
+
   const [data, setData] = useState([]);
   const [topplayer, setTopPlayer] = useState([]);
   const [ActiveUser, setActiveUser] = useState([]);
@@ -34,10 +37,10 @@ const Dashbord = () => {
     try {
       const config = {
         method: "GET",
-        url: "http://localhost:5000/user/get_revenue",
+        url: `${apiUrl}/user/get_revenue`,
       };
       const response = await axios(config);
-      // console.log(response,'Totle revenue');
+      console.log(response,'Totle revenue');
       setTotleRevenue(response?.data?.totalRevenue);
     } catch (err) {
       console.error(err);
@@ -67,11 +70,11 @@ const Dashbord = () => {
     try {
       const config = {
         method: "GET",
-        url: "http://localhost:5000/user/get_TrendingGame",
+        url:  `${apiUrl}/user/get_TrendingGame`,
       };
       const response = await axios(config);
       setData(response?.data);
-      console.log(response?.data,"Trending Game");
+      // console.log(response?.data,"Trending Game");
     } catch (err) {
       console.log("Error", err);
     }
@@ -80,12 +83,12 @@ const Dashbord = () => {
   const TopPlayers = async () => {
     const config = {
       method: "GET",
-      url: "http://localhost:5000/user/get_TopPlayer",
+      url: `${apiUrl}/user/get_TopPlayer`,
     };
     const response = await axios(config);
     setTopPlayer(response?.data?.Player);
     setFilterData(response?.data?.Player);
-    console.log(response.data, "Top Player");
+    // console.log(response.data, "Top Player");
   };
 
   useEffect(() => {
@@ -98,12 +101,12 @@ const Dashbord = () => {
   const TotalActiveUser = async () => {
     const config = {
       method: "GET",
-      url: "http://localhost:5000/user/get_ActiveUsers",
+      url: `${apiUrl}/user/get_ActiveUsers`,
     };
 
     const response = await axios(config);
     setActiveUser(response?.data?.Total);
-    console.log(response?.data, "responce");
+    // console.log(response?.data, "responce");
   };
   return (
     <>

@@ -15,6 +15,9 @@ import DataTable from "react-data-table-component";
 import axios from "axios";
 
 const ListOfUser = () => {
+
+  const apiUrl = import.meta.env.VITE_APP_API_URL;
+
   const [allPlayer, setAllPlayer] = useState([]);
   const [TopPlayers, setTopPlayers] = useState([]);
   const [search, setSearch] = useState();
@@ -85,7 +88,7 @@ const ListOfUser = () => {
   const AllPlayer = async () => {
     const config = {
       method: "GET",
-      url: "http://localhost:5000/user/get_AllUsers",
+      url: `${apiUrl}/user/get_AllUsers`,
     };
     const response = await axios(config);
     setAllPlayer(response?.data?.Users);
@@ -96,7 +99,7 @@ const ListOfUser = () => {
   const TopPlayer = async () => {
     const config = {
       method: "GET",
-      url: "http://localhost:5000/user/get_TopPlayer",
+      url: `${apiUrl}/user/get_TopPlayer`,
     };
 
     const response = await axios(config);
