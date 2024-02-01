@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Text, Button, useMediaQuery, Link } from "@chakra-ui/react";
+import { Box, Text, Button, useMediaQuery, Link, Image } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 import Picture from "../../assets/teenpatti.webp";
@@ -52,21 +52,23 @@ const AdminLogin = () => {
   };
   return (
     <>
+    <Box width={["65%"]}>
       <Box
         backgroundColor="grey"
         width={isLargerThan1250 ? "1150px" : "100%"}
         height={isLargerThan1250 ? "550px" : "100%"}
         position="relative"
+        borderRadius ='10px'
         top={42}
         left={55}
         boxShadow="45px 45px 45px rgba(2, 4, 20, 0.3)"
       >
-        <img
+        <Image
           src={Picture} // make sure 'Picture' is a valid image source
           alt="m"
+          width= {["70%", "40%"]}
           style={{
-            width: "40%",
-            height: "80%",
+            borderRadius :'10px',
             position: "relative",
             top: "10%",
             left: "10%",
@@ -91,11 +93,13 @@ const AdminLogin = () => {
         >
           <img
             style={{
-              width: "40%",
-              height: "80%",
+              width: "50%",
+              height: "100%",
               position: "relative",
               bottom: "20%",
               left: "25%",
+             
+
             }}
             src={king} // make sure 'king' is a valid image source
             alt=""
@@ -106,9 +110,9 @@ const AdminLogin = () => {
             fontStyle="italic"
             position="relative"
             bottom="7em"
-            left={100}
+            left={65}
           >
-            Teen Patti king
+           Mahalaxmi 
           </Text>
           <Text
             color={"black"}
@@ -165,7 +169,7 @@ const AdminLogin = () => {
             <Button
               backgroundImage="linear-gradient(to top, red, yellow)"
               padding="5px 10px"
-              width="22.5em"
+              width={["12.5rem", "22.5em"]}
               fontWeight="bold"
               mt="0.5rem"
               onClick={handleLogin}
@@ -174,6 +178,7 @@ const AdminLogin = () => {
             </Button>
           </Box>
         </Box>
+      </Box>
       </Box>
     </>
   );
