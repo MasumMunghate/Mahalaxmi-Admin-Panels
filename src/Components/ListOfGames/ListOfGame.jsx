@@ -16,7 +16,7 @@ const ListOfGame = () => {
       url: `${apiUrl}/user/get_ListOfGames`,
     };
     const response = await axios(config);
-    setAllGameList(response?.data?.Game);
+    setAllGameList(response?.data?.games);
     console.log(response,'responce');
   };
   return (
@@ -30,8 +30,8 @@ const ListOfGame = () => {
           <Flex flexWrap="wrap" justify="center" gap="1rem">
             {/* Card One */}
             {allGameList &&
-              allGameList?.map((game) => {
-                const { gamename, user, status } = game;
+              allGameList?.map((totalgame) => {
+                const { game, activeUsers, status,totalRevenue } = totalgame;
                 return (
                   <Box p="1rem" width={{ base: "100%", md: "30%" }}>
                     <Box
@@ -49,7 +49,7 @@ const ListOfGame = () => {
                         height="200px"
                       />
                       <Flex justify="space-between" mt="1rem">
-                        <Text fontWeight="600">{gamename}</Text>
+                        <Text fontWeight="600">{game}</Text>
                         <Flex width="40%" alignItems="center">
                           <FaStar cursor={"pointer"} />
                           <FaStar cursor={"pointer"} />
@@ -59,11 +59,11 @@ const ListOfGame = () => {
                         </Flex>
                       </Flex>
                       <Text fontWeight="600" color="green">
-                        {user} Player
+                        {activeUsers} Player
                       </Text>
 
                       <Text fontWeight="600" color="green" mt="1" mb="1">
-                        $1,00,000
+                        {totalRevenue}
                       </Text>
                       <Flex
                         backgroundColor="#e6e6e6"

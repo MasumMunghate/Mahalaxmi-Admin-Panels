@@ -22,6 +22,7 @@ import {
 } from "@mui/icons-material";
 import React from "react";
 import { useState, useEffect } from "react";
+// import Logo from "..//../assets/WhatsApp Image 2024-01-31 at 6.43.57 PM (2).jpeg";
 import Logo from "..//../assets/Frame 1000011481.svg";
 import { NavLink } from "react-router-dom";
 import { HamburgerIcon } from "@chakra-ui/icons";
@@ -65,9 +66,11 @@ const Sidebar = () => {
           <img
             src={Logo}
             alt=""
+            backgroundColor='#6a0000'
+          
             style={{
-              width: "18rem",
-              height: "8rem",
+              width: "16rem",
+              height: "9rem",
               backgroundColor: "#6a0000",
             }}
           />

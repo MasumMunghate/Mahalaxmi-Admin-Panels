@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Text, Button, useMediaQuery } from "@chakra-ui/react";
+import { Box, Text, Button, useMediaQuery, Link } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 import Picture from "../../assets/teenpatti.webp";
@@ -11,17 +11,17 @@ const AdminLogin = () => {
   const [isLargerThan1250] = useMediaQuery("(min-width: 1250px)");
   const [adminID, setAdminID] = useState("");
   const [adminPassword, setAdminPassword] = useState("");
+  const apiUrl = import.meta.env.VITE_APP_API_URL;
 
   const handleLogin = async () => {
-    const apiUrl = import.meta.env.VITE_APP_API_URL;
     const paylode = {
-      username: adminID,
+      mobileNumber: adminID,
       password: adminPassword,
     };
 
     const congif = {
       method: "POST",
-      url: `${apiUrl}/user/signin`,
+      url: `${apiUrl}/admin/signIn`,
       data: paylode,
     };
 
@@ -30,6 +30,25 @@ const AdminLogin = () => {
       navigate("rootlayout");
     }
     console.log(response, "respo");
+  };
+  // http://localhost:5000/admin/forgetPassword
+  const forgotPassword = async () => {
+    const payload = {
+      mobileNumber: adminID,
+    };
+
+    const congif = {
+      method: "POST",
+      url: `${apiUrl}/admin/forgetPassword`,
+      data: payload,
+    };
+
+    const response = await axios(congif);
+    console.log(response, "OTP");
+
+    if (response.status === 200) {
+      navigate("/otp");
+    }
   };
   return (
     <>
@@ -103,7 +122,7 @@ const AdminLogin = () => {
           <Box position="relative" bottom="4em">
             <input
               type="text"
-              placeholder="Admin User ID"
+              placeholder="Admin Mobile Number"
               value={adminID}
               onChange={(e) => setAdminID(e.target.value)}
               style={{
@@ -136,11 +155,19 @@ const AdminLogin = () => {
                 boxSizing: "border-box",
               }}
             />
+            <Link
+              float="right"
+              fontSize="2lg"
+              onClick={() => forgotPassword(adminID)}
+            >
+              Forgot Password
+            </Link>
             <Button
               backgroundImage="linear-gradient(to top, red, yellow)"
               padding="5px 10px"
               width="22.5em"
               fontWeight="bold"
+              mt="0.5rem"
               onClick={handleLogin}
             >
               Log In

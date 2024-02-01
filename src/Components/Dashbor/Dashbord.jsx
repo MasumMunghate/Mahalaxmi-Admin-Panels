@@ -40,7 +40,7 @@ const Dashbord = () => {
         url: `${apiUrl}/user/get_revenue`,
       };
       const response = await axios(config);
-      console.log(response,'Totle revenue');
+      // console.log(response,'Totle revenue');
       setTotleRevenue(response?.data?.totalRevenue);
     } catch (err) {
       console.error(err);
@@ -73,8 +73,8 @@ const Dashbord = () => {
         url:  `${apiUrl}/user/get_TrendingGame`,
       };
       const response = await axios(config);
-      setData(response?.data);
-      // console.log(response?.data,"Trending Game");
+      setData(response?.data?.games);
+      console.log(response,"Trending Game");
     } catch (err) {
       console.log("Error", err);
     }
@@ -168,17 +168,17 @@ const Dashbord = () => {
         >
           <Tbody>
             {data &&
-              data?.Game?.map((game) => {
-                const { gamename, user } = game;
+              data?.map((TrendingGame) => {
+                const { game, totalRevenue } = TrendingGame;
                 return (
                   <Tr key={game?._id}>
                     <Td>
                       <Avatar src="https://store-images.s-microsoft.com/image/apps.17247.13552113910340840.b3fbbc98-4d8c-47a1-902e-7532f8d4de3e.288a680d-b29e-40fe-8a32-18ff634cbd50?mode=scale&q=90&h=1080&w=1920" />
                     </Td>
 
-                    <Td fontWeight="500">{gamename}</Td>
+                    <Td fontWeight="500">{game}</Td>
                     <Td fontWeight="500" color="green">
-                      {user}
+                      {totalRevenue}
                     </Td>
                   </Tr>
                 );

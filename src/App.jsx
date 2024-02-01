@@ -14,6 +14,8 @@ import AccountStatment from "./Components/AccountStatement/AccountStatment";
 import LogOut from "./Components/LogOut/LogOut";
 
 import AdminLogin from "./Components/AdminLogin/AdminLogin";
+import Otp from "./Components/OTP/Otp";
+import ConformPassword from "./Components/ComformPassword/ConformPassword";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,7 +28,10 @@ const router = createBrowserRouter(
           <Route path="listofuser" element={<ListOfUser />} />
           <Route path="accountstatement" element={<AccountStatment />} />
           <Route path="logout" element={<LogOut />} />
+          
         </Route>
+        <Route path="/otp" element={<Otp/>} />
+        <Route path="/conformpassword" element={<ConformPassword />} />
       </Route>
       
     </>
