@@ -57,9 +57,9 @@ const AdminLogin = () => {
           boxShadow="45px 45px 45px rgba(2, 4, 20, 0.3)"
         >
           <Image
-            src={Picture} // make sure 'Picture' is a valid image source
+            src={Picture} 
             alt="m"
-            width={["70%", "40%"]}
+            width={["70%", "38%"]}
             style={{
               borderRadius: "10px",
               position: "relative",
@@ -71,12 +71,12 @@ const AdminLogin = () => {
           <Box
             as="form"
             bg="white"
-            p={8}
+            p={{base:8,md:3}}
             borderRadius="md"
             boxShadow="md"
-            maxW="440px"
+            maxW={{base:"400px",md:"400px"}}
             mx="auto"
-            height="400px"
+            height={{base:"380px",md:"470px"}}
             display="flex"
             flexDirection="column"
             justifyContent="space-between"
@@ -92,7 +92,7 @@ const AdminLogin = () => {
                 bottom: "15%",
                 left: "15%",
               }}
-              src={king} 
+              src={king}
               alt=""
             />
             <Text
@@ -100,10 +100,10 @@ const AdminLogin = () => {
               fontWeight="bold"
               fontStyle="italic"
               position="relative"
-              fontSize='1.7rem'
-              bottom="5rem"
+              fontSize={{base:"1.7rem",md:"2.5rem"}}
+              bottom={{base:"5rem",md:"9rem"}}
               // textAlign="center"
-              left={10}
+              left={{base:"10" , md:"20"}}
             >
               Mahalaxmi
             </Text>
@@ -111,12 +111,12 @@ const AdminLogin = () => {
               color={"black"}
               fontWeight="bold"
               position="relative"
-              bottom="3em"
-              fontSize="1.5em"
+              bottom={{base:"3em" , md:"5em"}}
+              fontSize={{base:"1.5em" , md:"1.8em"}}
             >
               Admin Login
             </Text>
-            <Box position="relative" bottom="4em">
+            <Box position="relative" bottom={{base:"4em", md:"8em"}}>
               <input
                 type="text"
                 placeholder="Admin Mobile Number"
@@ -158,11 +158,12 @@ const AdminLogin = () => {
               <Button
                 backgroundImage="linear-gradient(to top, #FFBB64, #E8C872)"
                 padding="5px 10px"
-                width={["12.5rem", "22.5em"]}
+                width={["13.5rem", "20rem"]}
                 fontWeight="bold"
-                mt="0.5rem"
+                mt="0.7rem"
+                ml={{base:"0rem" , md:"1.5rem"}}
                 onClick={handleLogin}
-                fontSize='1.2rem'
+                fontSize="1.2rem"
               >
                 Log In
               </Button>
