@@ -50,11 +50,11 @@ const Sidebar = () => {
         <Box
           as={HamburgerIcon}
           onClick={onOpen}
-          position="fixed"
-          top="1.6rem"
-          left="3rem"
+          position="absolute"
+          top="6"
+          left="10"
           fontSize="1.9rem"
-          zIndex={10}
+          zIndex={1000} // Increase the value if needed
           cursor="pointer"
           bg="red.100"
         />
@@ -66,8 +66,7 @@ const Sidebar = () => {
           <img
             src={Logo}
             alt=""
-            backgroundColor='#6a0000'
-          
+            backgroundColor="#6a0000"
             style={{
               width: "16rem",
               height: "9rem",
@@ -187,7 +186,7 @@ const Sidebar = () => {
                 </Flex>
               </Box> */}
               <Box bg="#6a0000">
-                <NavLink to='/'>
+                <NavLink to="/">
                   <Flex
                     align="center"
                     bg="#6a0000"
@@ -246,87 +245,87 @@ const Sidebar = () => {
                   >
                     <Flex direction="column" justify="center" fontSize="1.5rem">
                       <Box bg="#6a0000" _hover={{ backgroundColor: "#ee9b02" }}>
-                        <NavLink to='/rootlayout'>
-                        <Flex
-                          align="center"
-                          bg="#6a0000"
-                          color="white"
-                          p="1rem"
-                          cursor="pointer"
-                        >
-                          <i
-                            className="fa-solid fa-table"
-                            style={{
-                              marginRight: "0.5rem",
-                              color: "white",
-                              backgroundColor: "#6a0000",
-                            }}
-                          ></i>
-                          Dashboard
-                        </Flex>
+                        <NavLink to="/rootlayout">
+                          <Flex
+                            align="center"
+                            bg="#6a0000"
+                            color="white"
+                            p="1rem"
+                            cursor="pointer"
+                          >
+                            <i
+                              className="fa-solid fa-table"
+                              style={{
+                                marginRight: "0.5rem",
+                                color: "white",
+                                backgroundColor: "#6a0000",
+                              }}
+                            ></i>
+                            Dashboard
+                          </Flex>
                         </NavLink>
                       </Box>
                       <Box bg="#6a0000">
-                        <NavLink to='listofgame'>
-                        <Flex
-                          align="center"
-                          bg="#6a0000"
-                          color="white"
-                          p="1rem"
-                          cursor="pointer"
-                        >
-                          <i
-                            className="fa-solid fa-gamepad"
-                            style={{
-                              marginRight: "0.5rem",
-                              color: "white",
-                              backgroundColor: "#6a0000",
-                            }}
-                          ></i>
-                          List of Games
-                        </Flex>
+                        <NavLink to="listofgame">
+                          <Flex
+                            align="center"
+                            bg="#6a0000"
+                            color="white"
+                            p="1rem"
+                            cursor="pointer"
+                          >
+                            <i
+                              className="fa-solid fa-gamepad"
+                              style={{
+                                marginRight: "0.5rem",
+                                color: "white",
+                                backgroundColor: "#6a0000",
+                              }}
+                            ></i>
+                            List of Games
+                          </Flex>
                         </NavLink>
                       </Box>
                       <Box bg="#6a0000">
-                        <NavLink to='listofuser'>
-                        <Flex
-                          align="center"
-                          bg="#6a0000"
-                          color="white"
-                          p="1rem"
-                          cursor="pointer"
-                        >
-                          <i
-                            className="fa-solid fa-people-group"
-                            style={{
-                              marginRight: "0.5rem",
-                              color: "white",
-                              backgroundColor: "#6a0000",
-                            }}
-                          ></i>
-                          List of Users
-                        </Flex>
+                        <NavLink to="listofuser">
+                          <Flex
+                            align="center"
+                            bg="#6a0000"
+                            color="white"
+                            p="1rem"
+                            cursor="pointer"
+                          >
+                            <i
+                              className="fa-solid fa-people-group"
+                              style={{
+                                marginRight: "0.5rem",
+                                color: "white",
+                                backgroundColor: "#6a0000",
+                              }}
+                            ></i>
+                            List of Users
+                          </Flex>
                         </NavLink>
                       </Box>
                       <Box bg="#6a0000">
-                        <NavLink to='accountstatement'>
-                        <Flex
-                          align="center"
-                          bg="#6a0000"
-                          color="white"
-                          p="0.5rem"
-                          cursor="pointer"
-                        >
-                          <i
-                            className="fa-solid fa-brain"
-                            style={{
-                              marginRight: "0.5rem",
-                              color: "white",
-                              backgroundColor: "#6a0000",
-                            }}
-                          ></i>
-                          Account Statement
-                        </Flex>
+                        <NavLink to="accountstatement">
+                          <Flex
+                            align="center"
+                            bg="#6a0000"
+                            color="white"
+                            p="0.5rem"
+                            cursor="pointer"
+                          >
+                            <i
+                              className="fa-solid fa-brain"
+                              style={{
+                                marginRight: "0.5rem",
+                                color: "white",
+                                backgroundColor: "#6a0000",
+                              }}
+                            ></i>
+                            Account Statement
+                          </Flex>
                         </NavLink>
                       </Box>
                       <Box bg="#6a0000">
@@ -350,23 +349,23 @@ const Sidebar = () => {
                       </Box>
                       <Box bg="#6a0000">
                         <NavLink to="/">
-                        <Flex
-                          align="center"
-                          bg="#6a0000"
-                          color="white"
-                          p="1rem"
-                          cursor="pointer"
-                        >
-                          <i
-                            className="fa-solid fa-arrow-right-from-bracket"
-                            style={{
-                              marginRight: "0.5rem",
-                              color: "white",
-                              backgroundColor: "#6a0000",
-                            }}
-                          ></i>
-                          Logout
-                        </Flex>
+                          <Flex
+                            align="center"
+                            bg="#6a0000"
+                            color="white"
+                            p="1rem"
+                            cursor="pointer"
+                          >
+                            <i
+                              className="fa-solid fa-arrow-right-from-bracket"
+                              style={{
+                                marginRight: "0.5rem",
+                                color: "white",
+                                backgroundColor: "#6a0000",
+                              }}
+                            ></i>
+                            Logout
+                          </Flex>
                         </NavLink>
                       </Box>
                     </Flex>

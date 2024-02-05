@@ -39,31 +39,13 @@ const AdminLogin = () => {
     }
     console.log(response, "respo");
   };
-  // http://localhost:5000/admin/forgetPassword
-  const forgotPassword = async (adminID) => {
-    const payload = {
-      mobileNumber: adminID,
-    };
 
-    const congif = {
-      method: "POST",
-      url: `${apiUrl}/admin/forgetPassword`,
-      data: payload,
-    };
-
-    const response = await axios(congif);
-    console.log(response, "OTP");
-    console.log("Admin Id >>", adminID);
-
-    // setOtp(response.data.user.otp);
-
-    if (response.status === 200) {
-      navigate("/otp");
-    }
+  const forgotPassword = () => {
+    navigate("/otp");
   };
   return (
     <>
-      <Box width={["65%"]}>
+      <Box width={["70%"]}>
         <Box
           backgroundColor="grey"
           width={isLargerThan1250 ? "1150px" : "100%"}
@@ -89,12 +71,12 @@ const AdminLogin = () => {
           <Box
             as="form"
             bg="white"
-            p={10}
+            p={8}
             borderRadius="md"
             boxShadow="md"
             maxW="440px"
             mx="auto"
-            height="440px"
+            height="400px"
             display="flex"
             flexDirection="column"
             justifyContent="space-between"
@@ -104,13 +86,13 @@ const AdminLogin = () => {
           >
             <img
               style={{
-                width: "50%",
+                width: "70%",
                 height: "100%",
                 position: "relative",
-                bottom: "20%",
-                left: "25%",
+                bottom: "15%",
+                left: "15%",
               }}
-              src={king} // make sure 'king' is a valid image source
+              src={king} 
               alt=""
             />
             <Text
@@ -118,8 +100,10 @@ const AdminLogin = () => {
               fontWeight="bold"
               fontStyle="italic"
               position="relative"
-              bottom="7em"
-              left={65}
+              fontSize='1.7rem'
+              bottom="5rem"
+              // textAlign="center"
+              left={10}
             >
               Mahalaxmi
             </Text>
@@ -168,20 +152,17 @@ const AdminLogin = () => {
                   boxSizing: "border-box",
                 }}
               />
-              <Link
-                float="right"
-                fontSize="2lg"
-                onClick={() => forgotPassword(adminID)}
-              >
+              <Link float="right" fontSize="2lg" onClick={forgotPassword}>
                 Forgot Password
               </Link>
               <Button
-                backgroundImage="linear-gradient(to top, red, yellow)"
+                backgroundImage="linear-gradient(to top, #FFBB64, #E8C872)"
                 padding="5px 10px"
                 width={["12.5rem", "22.5em"]}
                 fontWeight="bold"
                 mt="0.5rem"
                 onClick={handleLogin}
+                fontSize='1.2rem'
               >
                 Log In
               </Button>
