@@ -38,30 +38,30 @@ const ListOfUser = () => {
     },
     {
       name: "Name",
-      selector: (row) => row.userId,
+      selector: (row) => row.mobileNumber,
     },
     {
       name: "Amount",
-      selector: (row) => row.balance,
+      selector: (row) => row.coins,
       sortable: true,
     },
   ];
 
   const columnsAllPlayer = [
     {
-      name: "Profile",
+      name: "Profile Image",
       selector: (row) => row.profile,
       cell: (row) => (
         <Avatar src="https://i.pinimg.com/564x/eb/fe/80/ebfe807d22df5cd97d9dae10aa04ad61.jpg" />
       ),
     },
     {
-      name: "Name",
-      selector: (row) => row.userId,
+      name: "Monile Number",
+      selector: (row) => row.mobileNumber,
     },
     {
       name: "Amount",
-      selector: (row) => row.balance,
+      selector: (row) => row.coins,
       sortable: true,
     },
   ];
@@ -73,14 +73,14 @@ const ListOfUser = () => {
 
   useEffect(() => {
     const result = allPlayer.filter((player) => {
-      return player.userId.toLowerCase().match(search.toLowerCase());
+      return player.mobileNumber.includes(search);
     });
     setFilterData(result);
   }, [search]);
 
   useEffect(() => {
     const result = TopPlayers.filter((player) => {
-      return player.userId.toLowerCase().match(search2.toLowerCase());
+      return player.mobileNumber.includes(search2);
     });
     setFilterData2(result);
   }, [search2]);
@@ -128,7 +128,7 @@ const ListOfUser = () => {
         <DataTable
           columns={columnsTopPlayer}
           data={FilterData2}
-          pagination
+          // pagination
           fixedHeader
           selectableRows
           highlightOnHover
@@ -159,7 +159,7 @@ const ListOfUser = () => {
           data={FilterData}
           pagination
           fixedHeader
-          selectableRows
+          // selectableRows
           highlightOnHover
           subHeader
           subHeaderComponent={

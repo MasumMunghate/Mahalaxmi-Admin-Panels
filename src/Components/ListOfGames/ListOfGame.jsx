@@ -26,6 +26,7 @@ const ListOfGame = () => {
           width={{ base: "90%", md: "60rem" }}
           ml={{ base: "1rem", md: "1rem" }}
           mx={{ base: "1rem", md: "2rem" }}
+          mt="2rem"
         >
           <Flex flexWrap="wrap" justify="center" gap="1rem">
             {/* Card One */}

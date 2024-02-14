@@ -14,9 +14,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 
+const apiUrl = import.meta.env.VITE_APP_API_URL;
 const Dashbord = () => {
 
-  const apiUrl = import.meta.env.VITE_APP_API_URL;
 
   const [data, setData] = useState([]);
   const [topplayer, setTopPlayer] = useState([]);
@@ -25,6 +25,8 @@ const Dashbord = () => {
 
   const [search, setSearch] = useState();
   const [filterData, setFilterData] = useState();
+
+  const [open , setOpen ] = useState(false);
 
   useEffect(() => {
     TredingGames();
@@ -56,15 +58,49 @@ const Dashbord = () => {
       ),
     },
     {
-      name: "Name",
-      selector: (row) => row.userId,
+      name: "Mobile Number",
+      selector: (row) => row.mobileNumber,
     },
     {
       name: "Amount",
-      selector: (row) => row.balance,
+      selector: (row) => row.coins,
       sortable: true,
     },
+  //   {
+  //     name:"Action",
+  //     cell:(row)=>(
+  //         <Button onClick={()=>handleClick(row.mobileNumber , row.balance)}>Add Coin</Button>
+  //     )
+  //  }
   ];
+
+  // Add coin Function
+  // https//:localhost:5000/userMaster/recharge
+  // const handleClick = async(mobileNumber , balance)=>{
+  //   try{
+  //     const payload = {
+  //       mobileNumber : mobileNumber,
+  //       coin : balance
+  //     }
+
+  //     const config ={
+  //       method : "POST",
+  //       url :  `${apiUrl}/userMaster/recharge`,
+  //       data : payload
+  //     }
+
+  //     const response = await axios(config);
+  //     if(response.status === 200){
+  //       alert("Money Send Successfully")
+  //     }
+
+  //     console.log(response,"responce");
+
+  //   }
+  //   catch(err){
+  //     console.log(err);
+  //   }
+  // }
 
   const TredingGames = async () => {
     try {
@@ -88,15 +124,16 @@ const Dashbord = () => {
     const response = await axios(config);
     setTopPlayer(response?.data?.Player);
     setFilterData(response?.data?.Player);
-    // console.log(response.data, "Top Player");
+    console.log(response.data, "Top Player");
   };
 
   useEffect(() => {
     const result = topplayer.filter((player) => {
-      return player.userId.toLowerCase().match(search.toLowerCase());
+      return player.mobileNumber.includes(search);
     });
     setFilterData(result);
   }, [search]);
+ 
 
   const TotalActiveUser = async () => {
     const config = {
@@ -196,29 +233,6 @@ const Dashbord = () => {
             Accept the Challenge
           </Text>
         </Box>
-        {/* <Table
-          variant="striped"
-          width="100%"
-          borderWidth="1px"
-          borderRadius="md"
-        >
-          <Tbody>
-            {topplayer &&
-              topplayer?.Player?.map((topplayers) => {
-                const {userId ,  balance }= topplayers;
-                return (
-                  <Tr key={topplayers?._id}>
-                    <Td>
-                      <Avatar src="https://i.pinimg.com/564x/eb/fe/80/ebfe807d22df5cd97d9dae10aa04ad61.jpg" />
-                    </Td>
-                    <Td fontWeight="500">{userId}</Td>
-                    <Td fontWeight="500">{balance}</Td>
-                  </Tr>
-                );
-              })}
-          </Tbody>
-        </Table> */}
-
         <DataTable
           columns={columnsAllPlayer}
           data={filterData}
